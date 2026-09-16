@@ -1,39 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pemutar Media Kuliah Responsif</title>
 
     <link rel="stylesheet" href="03-tugas-style.css">
-</head>
+  </head>
 
-<body>
-
+  <body>
     <main class="page">
+      <article class="media-card">
+        <picture class="media-card__cover">
+          <source
+            media="(min-width: 800px)"
+            srcset="assets/images/cover-desktop.webp"
+            type="image/webp">
 
-        <article class="media-card">
+          <source
+            media="(max-width: 799px)"
+            srcset="assets/images/cover-mobile.webp"
+            type="image/webp">
 
-            <div class="media-card__content">
+          <img
+            src="assets/images/cover-mobile.webp"
+            alt="Ilustrasi pembelajaran pemrograman web">
+        </picture>
 
-                <span class="media-card__label">
-                    Materi Kuliah
-                </span>
+        <div class="media-card__content">
+          <span class="media-card__label"> Materi Kuliah </span>
 
-                <h1 class="media-card__title">
-                    Pemrograman Web
-                </h1>
+          <h1 class="media-card__title">Pemrograman Web</h1>
 
-                <p class="media-card__description">
-                    Pelajari dasar-dasar pengembangan website menggunakan
-                    HTML, CSS, dan media digital responsif.
-                </p>
-
-            </div>
-
-        </article>
-
+          <p class="media-card__description">
+            Pelajari dasar-dasar pengembangan website menggunakan HTML, CSS, dan
+            media digital responsif.
+          </p>
+        </div>
+      </article>
     </main>
-
-</body>
+  </body>
 </html>
