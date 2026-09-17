@@ -1,0 +1,98 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Poppins", Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #851616;
+    background-color: #f4f6f9;
+    padding: 20px;
+}
+
+.page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.media-card {
+    width: 100%;
+    max-width: 650px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    border: 1px solid #e1e4e8;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.media-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+}
+
+.media-card__cover {
+    display: block;
+    width: 100%;
+}
+
+.media-card__cover img {
+    display: block;
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+.media-card__video {
+    display: block;
+    width: 100%;
+    background-color: #000000;
+}
+
+.media-card__content {
+    padding: 28px;
+}
+
+.media-card__label {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.media-card__title {
+    margin-bottom: 12px;
+    font-size: 1.8rem;
+    line-height: 1.3;
+}
+
+.media-card__description {
+    margin-bottom: 24px;
+    color: #555;
+}
+
+.media-card__audio {
+    padding-top: 20px;
+    border-top: 1px solid #e1e4e8;
+}
+
+.media-card__audio-title {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.media-card__audio-player {
+    width: 100%;
+}
