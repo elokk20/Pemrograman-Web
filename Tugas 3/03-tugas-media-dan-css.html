@@ -1,50 +1,47 @@
 <!doctype html>
 <html lang="id">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pemutar Media Kuliah Responsif</title>
 
-    <link rel="stylesheet" href="03-tugas-style.css">
+    <link rel="stylesheet" href="03-tugas-style.css" />
   </head>
 
   <body>
     <main class="page">
-      <article class="media-card">
+      <article class="media-card media-card--featured">
         <picture class="media-card__cover">
           <source
             media="(min-width: 800px)"
             srcset="assets/images/cover-desktop.webp"
-            type="image/webp">
+            type="image/webp"
+          />
 
           <source
             media="(max-width: 799px)"
             srcset="assets/images/cover-mobile.webp"
-            type="image/webp">
+            type="image/webp"
+          />
 
           <img
             src="assets/images/cover-mobile.webp"
-            alt="Ilustrasi pembelajaran pemrograman web">
+            alt="Ilustrasi pembelajaran pemrograman web"
+          />
         </picture>
 
         <video
           class="media-card__video"
           controls
           preload="metadata"
-          poster="assets/images/video-poster.jpg">
+          poster="assets/images/video-poster.jpg"
+        >
+          <source src="assets/videos/kuliah.webm" type="video/webm" />
 
-          <source 
-                src="assets/videos/kuliah.webm" 
-                type="video/webm">
-
-          <source 
-                src="assets/videos/kuliah.mp4" 
-                type="video/mp4">
+          <source src="assets/videos/kuliah.mp4" type="video/mp4" />
 
           Browser Anda tidak mendukung pemutaran video HTML5.
-          <a href="assets/videos/kuliah.mp4"> 
-            Unduh video kuliah 
-          </a>
+          <a href="assets/videos/kuliah.mp4"> Unduh video kuliah </a>
         </video>
 
         <div class="media-card__content">
@@ -56,6 +53,28 @@
             Pelajari dasar-dasar pengembangan website menggunakan HTML, CSS, dan
             media digital responsif.
           </p>
+
+          <div class="media-card__audio">
+            <h2 class="media-card__audio-title">
+              Penjelasan Materi
+            </h2>
+
+            <audio 
+              class="media-card__audio-player" 
+              controls 
+              preload="metadata">
+              
+              <source 
+                src="assets/audios/penjelasan.ogg" 
+                type="audio/ogg">
+
+              <source 
+                src="assets/audios/penjelasan.mp3" 
+                type="audio/mpeg">
+
+              Browser Anda tidak mendukung pemutaran audio HTML5.
+            </audio>
+          </div>
         </div>
       </article>
     </main>

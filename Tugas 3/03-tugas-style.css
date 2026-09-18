@@ -10,7 +10,7 @@ body {
     font-family: "Poppins", Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #851616;
-    background-color: #f4f6f9;
+    background-color: #eeede9;
     padding: 20px;
 }
 
@@ -23,13 +23,13 @@ body {
 
 .media-card {
     width: 100%;
-    max-width: 650px;
+    max-width: 600px;
     margin: 40px auto;
     background-color: #ffffff;
-    border: 1px solid #e1e4e8;
-    border-radius: 16px;
+    border: 2px solid #8c2626;
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 50px rgba(0, 0, 0, 0.08);
 
     transition:
         transform 0.3s ease,
@@ -44,6 +44,7 @@ body {
 .media-card__cover {
     display: block;
     width: 100%;
+    margin-bottom: 16px;
 }
 
 .media-card__cover img {
@@ -55,8 +56,10 @@ body {
 
 .media-card__video {
     display: block;
-    width: 100%;
+    width: 90%;
+    margin: 16px auto 0;
     background-color: #000000;
+    border-radius: 6px;
 }
 
 .media-card__content {
@@ -81,6 +84,10 @@ body {
 .media-card__description {
     margin-bottom: 24px;
     color: #555;
+}
+
+.media-card--featured .media-card__description {
+    color: #433332;
 }
 
 .media-card__audio {
