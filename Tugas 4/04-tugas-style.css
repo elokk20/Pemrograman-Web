@@ -98,3 +98,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
+
+.card-title {
+    font-size: 1.7rem;
+}
