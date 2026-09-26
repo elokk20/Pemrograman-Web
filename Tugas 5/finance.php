@@ -77,6 +77,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <h1>Sistem Manajemen Keuangan Sederhana</h1>
 
+    <h2>Saldo Saat Ini</h2>
+    <p>Rp <?= number_format($_SESSION['balance'], 2, ',', '.') ?></p>
+
+    <?php if (isset($message)): ?>
+    <p><?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?></p>
+    <?php endif; ?>
+
     <form method="POST">
         <input
             type="hidden"
