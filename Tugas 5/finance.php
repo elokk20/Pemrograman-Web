@@ -1,11 +1,10 @@
 <?php
 
 declare(strict_types=1);
-
+date_default_timezone_set('Asia/Makassar');
 require_once './Transaction.php';
 
 session_start();
-
 if (!isset($_SESSION['balance'])) {
     $_SESSION['balance'] = 0.0;
 }
@@ -64,7 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $message = 'Saldo tidak mencukupi untuk melakukan penarikan.';
     }
 }
-
 ?>
 
 <!DOCTYPE html>
