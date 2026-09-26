@@ -18,6 +18,32 @@ if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $postToken = $_POST['csrf_token'] ?? '';
+
+    if (
+        !is_string($postToken) ||
+        !hash_equals($_SESSION['csrf_token'], $postToken)
+    ) {
+        die('Kesalahan Keamanan: Token CSRF tidak cocok.');
+    }
+
+    $type = $_POST['type'] ?? '';
+    $amount = $_POST['amount'] ?? '';
+
+    if (!is_string($type) || !in_array($type, ['deposit', 'withdraw'], true)) {
+        die('Jenis transaksi tidak valid.');
+    }
+
+    if (
+        !is_string($amount) ||
+        !preg_match('/^\d+(\.\d+)?$/', $amount) ||
+        (float) $amount <= 0
+    ) {
+        die('Nominal harus berupa angka desimal positif.');
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
