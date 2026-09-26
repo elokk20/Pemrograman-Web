@@ -42,6 +42,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ) {
         die('Nominal harus berupa angka desimal positif.');
     }
+
+    $amount = (float) $amount;
+
+    $transaction = new Transaction(
+        bin2hex(random_bytes(8)),
+        $type,
+        $amount
+    );
+
+    if ($transaction->process()) {
+        $_SESSION['transactions'][] = [
+            'id' => $transaction->getId(),
+            'type' => $transaction->getType(),
+            'amount' => $transaction->getAmount(),
+            'date' => date('Y-m-d H:i:s'),
+        ];
+
+        $message = 'Transaksi berhasil diproses.';
+    } else {
+        $message = 'Saldo tidak mencukupi untuk melakukan penarikan.';
+    }
 }
 
 ?>
