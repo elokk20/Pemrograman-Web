@@ -37,7 +37,29 @@ if (empty($_SESSION['csrf_token'])) {
             value="<?= htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8') ?>"
         >
 
-        <button type="submit">Kirim Transaksi</button>
+        <label for="type">Jenis Transaksi:</label>
+        <select name="type" id="type" required>
+            <option value="">-- Pilih Transaksi --</option>
+            <option value="deposit">Deposit</option>
+            <option value="withdraw">Withdraw</option>
+        </select>
+
+        <br><br>
+
+        <label for="amount">Nominal:</label>
+        <input
+            type="number"
+            name="amount"
+            id="amount"
+            min="0.01"
+            step="0.01"
+            placeholder="Masukkan nominal"
+            required
+        >
+
+        <br><br>
+
+        <button type="submit">Proses Transaksi</button>
     </form>
 </body>
 </html>
