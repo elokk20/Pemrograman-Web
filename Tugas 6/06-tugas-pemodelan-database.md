@@ -68,12 +68,10 @@ Relasi antar entitas dalam sistem E-Library adalah sebagai berikut:
 `transaksi_peminjaman` menjadi entitas yang menghubungkan mahasiswa dengan buku dalam aktivitas peminjaman.
 
 ## 5. Normalisasi
-
 ### 5.1 Unnormalized Form (UNF)
 Pada bentuk UNF, data mahasiswa, buku, penerbit, dan transaksi peminjaman masih dicatat dalam satu struktur data. Informasi peminjaman dapat berisi lebih dari satu buku dalam satu record sehingga terdapat kelompok data berulang.
 
 Contoh bentuk UNF:
-
 | NIM | Nama Mahasiswa | Program Studi | Buku Dipinjam | Penerbit | Tanggal Peminjaman | Tanggal Jatuh Tempo | Tanggal Pengembalian |
 |---|---|---|---|---|---|---|---|
 | D121241031 | Tyas | Teknik Informatika | {B001, Basis Data, Rais, 2024}, {B002, Pemrograman Web, Informatika, 2023} | {Rais, Informatika} | {2026-09-01, 2026-09-03} | {2026-09-08, 2026-09-10} | {2026-09-07, -} |
@@ -89,6 +87,18 @@ Masalah pada bentuk UNF:
 - Struktur tersebut dapat menimbulkan anomali saat data ditambahkan, diubah, atau dihapus.
 
 ### 5.2 First Normal Form (1NF)
+Pada tahap 1NF, kelompok data berulang pada bentuk UNF diuraikan menjadi baris-baris terpisah. Setiap sel hanya berisi satu nilai atomik sehingga satu baris mewakili satu transaksi peminjaman untuk satu buku.
+
+Contoh bentuk 1NF:
+| ID Peminjaman | NIM | Nama Mahasiswa | Program Studi | ID Buku | Judul Buku | Nama Penerbit | Tahun Terbit | Tanggal Peminjaman | Tanggal Jatuh Tempo | Tanggal Pengembalian |
+|---|---|---|---|---|---|---|---|---|---|---|
+| P001 | D121241031 | Tyas | Teknik Informatika | B001 | Basis Data | Rais | 2024 | 2026-09-01 | 2026-09-08 | 2026-09-07 |
+| P002 | D121241031 | Tyas | Teknik Informatika | B002 | Pemrograman Web | Informatika | 2023 | 2026-09-03 | 2026-09-10 | - |
+| P003 | D121241077 | Yusuf | Teknik Informatika | B003 | Jaringan Komputer | Erlangga | 2022 | 2026-09-05 | 2026-09-12 | 2026-09-11 |
+
+Pada bentuk ini, setiap kolom hanya memiliki satu nilai dan tidak terdapat kelompok data berulang dalam satu sel. Namun, masih terdapat redundansi data. Data mahasiswa 'Tyas' ditulis berulang untuk setiap buku yang dipinjam, dan informasi penerbit serta buku juga dapat muncul kembali pada transaksi yang berbeda.
+
+Untuk tahap normalisasi, `ID Peminjaman` dan `ID Buku` dapat digunakan sebagai kunci komposit pada contoh 1NF. Pada tahap 2NF, akan dianalisis ketergantungan setiap atribut terhadap bagian dari kunci komposit tersebut sehingga atribut yang hanya bergantung pada `ID Peminjaman` atau `ID Buku` dapat dipisahkan.
 
 ### 5.3 Second Normal Form (2NF)
 
