@@ -42,14 +42,40 @@ Atribut:
 - `status_peminjaman`
 
 ## 3. Atribut dan Kunci
-
 ### 3.1 Mahasiswa
+| Atribut | Keterangan | Kunci |
+|---|---|---|
+| nim | Nomor induk mahasiswa | PK |
+| nama_mahasiswa | Nama lengkap mahasiswa | - |
+| program_studi | Program studi mahasiswa | - |
+| email | Alamat email mahasiswa | - |
 
 ### 3.2 Buku
+| Atribut | Keterangan | Kunci |
+|---|---|---|
+| id_buku | Identitas unik buku | PK |
+| judul_buku | Judul buku | - |
+| isbn | Nomor ISBN buku | - |
+| tahun_terbit | Tahun buku diterbitkan | - |
+| id_penerbit | Identitas penerbit buku | FK |
 
 ### 3.3 Penerbit
+| Atribut | Keterangan | Kunci |
+|---|---|---|
+| id_penerbit | Identitas unik penerbit | PK |
+| nama_penerbit | Nama penerbit | - |
+| alamat_penerbit | Alamat penerbit | - |
 
 ### 3.4 Transaksi Peminjaman
+| Atribut | Keterangan | Kunci |
+|---|---|---|
+| id_peminjaman | Identitas unik transaksi peminjaman | PK |
+| nim | Nomor mahasiswa yang melakukan peminjaman | FK |
+| id_buku | Identitas buku yang dipinjam | FK |
+| tanggal_peminjaman | Tanggal buku dipinjam | - |
+| tanggal_jatuh_tempo | Batas waktu pengembalian buku | - |
+| tanggal_pengembalian | Tanggal buku dikembalikan | - |
+| status_peminjaman | Status peminjaman buku | - |
 
 ## 4. Relasi Antar Entitas
 Relasi antar entitas dalam sistem E-Library adalah sebagai berikut:
