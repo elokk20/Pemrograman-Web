@@ -124,6 +124,42 @@ Untuk menghilangkan ketergantungan parsial, data dipisahkan menjadi beberapa tab
 Dengan pemisahan tersebut, atribut yang sebelumnya hanya bergantung pada sebagian kunci komposit tidak lagi berada dalam satu tabel. Namun, pada tabel Transaksi Peminjaman masih terdapat ketergantungan antara `NIM` dengan `Nama Mahasiswa` dan `Program Studi`. Pada tahap berikutnya, ketergantungan tersebut akan dihilangkan pada bentuk 3NF.
 
 ### 5.4 Third Normal Form (3NF)
+Pada tahap 3NF, ketergantungan transitif pada bentuk 2NF dihilangkan. Ketergantungan transitif terjadi ketika atribut non-kunci bergantung pada atribut non-kunci lainnya.
+
+Pada tabel Transaksi Peminjaman, terdapat hubungan `ID Peminjaman` -> `NIM` -> `Nama Mahasiswa` dan `Program Studi`. Oleh karena itu, informasi mahasiswa dipisahkan ke dalam tabel Mahasiswa.
+
+Pada tabel Buku, terdapat hubungan `ID Buku` -> `ID Penerbit` -> `Nama Penerbit`. Oleh karena itu, informasi penerbit dipisahkan ke dalam tabel Penerbit.
+
+Hasil pemisahan pada bentuk 3NF:
+
+**Tabel Mahasiswa:**
+| NIM | Nama Mahasiswa | Program Studi | Email |
+|---|---|---|---|
+| D121241031 | Tyas | Teknik Informatika | tyas@gmail.com |
+| D121241077 | Yusuf | Teknik Informatika | yusuf@gmail.com |
+
+**Tabel Penerbit:**
+| ID Penerbit | Nama Penerbit | Alamat Penerbit |
+|---|---|---|
+| T001 | Rais | Makassar |
+| T002 | Informatika | Jakarta |
+| T003 | Erlangga | Jakarta |
+
+**Tabel Buku:**
+| ID Buku | Judul Buku | ISBN | Tahun Terbit | ID Penerbit |
+|---|---|---|---|---|
+| B001 | Basis Data | 978000000001 | 2024 | T001 |
+| B002 | Pemrograman Web | 978000000002 | 2023 | T002 |
+| B003 | Jaringan Komputer | 978000000003 | 2022 | T003 |
+
+**Tabel Transaksi Peminjaman:**
+| ID Peminjaman | NIM | ID Buku | Tanggal Peminjaman | Tanggal Jatuh Tempo | Tanggal Pengembalian |
+|---|---|---|---|---|---|
+| P001 | D121241031 | B001 | 2026-09-01 | 2026-09-08 | 2026-09-07 |
+| P002 | D121241031 | B002 | 2026-09-03 | 2026-09-10 | - |
+| P003 | D121241077 | B003 | 2026-09-05 | 2026-09-12 | 2026-09-11 |
+
+Dengan pemisahan tersebut, setiap atribut non-kunci bergantung langsung pada primary key tabelnya. Data mahasiswa, buku, dan penerbit juga tidak perlu diulang pada setiap transaksi peminjaman.
 
 ## 6. Rancangan Tabel Akhir
 
