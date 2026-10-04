@@ -162,7 +162,40 @@ Hasil pemisahan pada bentuk 3NF:
 Dengan pemisahan tersebut, setiap atribut non-kunci bergantung langsung pada primary key tabelnya. Data mahasiswa, buku, dan penerbit juga tidak perlu diulang pada setiap transaksi peminjaman.
 
 ## 6. Rancangan Tabel Akhir
+### 6.1 Tabel Mahasiswa
+| Kolom | Tipe Data | Kunci | Keterangan |
+|---|---|---|---|
+| nim | VARCHAR(15) | PK | Nomor induk mahasiswa |
+| nama_mahasiswa | VARCHAR(100) | - | Nama lengkap mahasiswa |
+| program_studi | VARCHAR(100) | - | Program studi mahasiswa |
+| email | VARCHAR(100) | - | Alamat email mahasiswa |
 
+### 6.2 Tabel Penerbit
+| Kolom | Tipe Data | Kunci | Keterangan |
+|---|---|---|---|
+| id_penerbit | VARCHAR(10) | PK | Identitas unik penerbit |
+| nama_penerbit | VARCHAR(100) | - | Nama penerbit |
+| alamat_penerbit | VARCHAR(255) | - | Alamat penerbit |
+
+### 6.3 Tabel Buku
+| Kolom | Tipe Data | Kunci | Keterangan |
+|---|---|---|---|
+| id_buku | VARCHAR(10) | PK | Identitas unik buku |
+| judul_buku | VARCHAR(200) | - | Judul buku |
+| isbn | VARCHAR(20) | - | Nomor ISBN buku |
+| tahun_terbit | YEAR | - | Tahun buku diterbitkan |
+| id_penerbit | VARCHAR(10) | FK | Mengacu pada id_penerbit pada tabel penerbit |
+
+### 6.4 Tabel Transaksi Peminjaman
+| Kolom | Tipe Data | Kunci | Keterangan |
+|---|---|---|---|
+| id_peminjaman | VARCHAR(10) | PK | Identitas unik transaksi peminjaman |
+| nim | VARCHAR(15) | FK | Mengacu pada nim pada tabel mahasiswa |
+| id_buku | VARCHAR(10) | FK | Mengacu pada id_buku pada tabel buku |
+| tanggal_peminjaman | DATE | - | Tanggal buku dipinjam |
+| tanggal_jatuh_tempo | DATE | - | Batas waktu pengembalian buku |
+| tanggal_pengembalian | DATE | - | Tanggal buku dikembalikan |
+| status_peminjaman | VARCHAR(20) | - | Status peminjaman buku |
 ## 7. Visualisasi Relasi
 
 ## 8. Kesimpulan
