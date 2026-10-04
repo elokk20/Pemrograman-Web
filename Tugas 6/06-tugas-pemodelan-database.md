@@ -135,7 +135,7 @@ Untuk menghilangkan ketergantungan parsial, data dipisahkan menjadi beberapa tab
 
 **Tabel Transaksi Peminjaman:**
 | ID Peminjaman | NIM | Nama Mahasiswa | Program Studi | ID Buku | Tanggal Peminjaman | Tanggal Jatuh Tempo | Tanggal Pengembalian |
-|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|---|
 | P001 | D121241031 | Tyas | Teknik Informatika | B001 | 2026-09-01 | 2026-09-08 | 2026-09-07 |
 | P001 | D121241031 | Tyas | Teknik Informatika | B002 | 2026-09-01 | 2026-09-08 | - |
 | P002 | D121241077 | Yusuf | Teknik Informatika | B003 | 2026-09-05 | 2026-09-12 | 2026-09-11 |
