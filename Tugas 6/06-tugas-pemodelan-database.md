@@ -101,6 +101,27 @@ Pada bentuk ini, setiap kolom hanya memiliki satu nilai dan tidak terdapat kelom
 Untuk tahap normalisasi, `ID Peminjaman` dan `ID Buku` dapat digunakan sebagai kunci komposit pada contoh 1NF. Pada tahap 2NF, akan dianalisis ketergantungan setiap atribut terhadap bagian dari kunci komposit tersebut sehingga atribut yang hanya bergantung pada `ID Peminjaman` atau `ID Buku` dapat dipisahkan.
 
 ### 5.3 Second Normal Form (2NF)
+Pada tahap 2NF, bentuk 1NF dianalisis untuk menghilangkan ketergantungan parsial. Pada tabel 1NF, kunci komposit terdiri dari `ID Peminjaman` dan `ID Buku`. Namun, beberapa atribut hanya bergantung pada salah satu bagian dari kunci tersebut.
+
+`Nama Mahasiswa`, `Program Studi`, `Tanggal Peminjaman`, `Tanggal Jatuh Tempo`, dan `Tanggal Pengembalian` bergantung pada `ID Peminjaman`, sedangkan `Judul Buku`, `Nama Penerbit`, dan `Tahun Terbit` bergantung pada `ID Buku`. Kondisi tersebut menunjukkan adanya ketergantungan parsial.
+
+Untuk menghilangkan ketergantungan parsial, data dipisahkan menjadi beberapa tabel.
+
+**Tabel Transaksi Peminjaman:**
+| ID Peminjaman | NIM | Nama Mahasiswa | Program Studi | Tanggal Peminjaman | Tanggal Jatuh Tempo | Tanggal Pengembalian |
+|---|---|---|---|---|---|---|
+| P001 | D121241031 | Tyas | Teknik Informatika | 2026-09-01 | 2026-09-08 | 2026-09-07 |
+| P002 | D121241031 | Tyas | Teknik Informatika | 2026-09-03 | 2026-09-10 | - |
+| P003 | D121241077 | Yusuf | Teknik Informatika | 2026-09-05 | 2026-09-12 | 2026-09-11 |
+
+**Tabel Buku:**
+| ID Buku | Judul Buku | Nama Penerbit | Tahun Terbit |
+|---|---|---|---|
+| B001 | Basis Data | Rais | 2024 |
+| B002 | Pemrograman Web | Informatika | 2023 |
+| B003 | Jaringan Komputer | Erlangga | 2022 |
+
+Dengan pemisahan tersebut, atribut yang sebelumnya hanya bergantung pada sebagian kunci komposit tidak lagi berada dalam satu tabel. Namun, pada tabel Transaksi Peminjaman masih terdapat ketergantungan antara `NIM` dengan `Nama Mahasiswa` dan `Program Studi`. Pada tahap berikutnya, ketergantungan tersebut akan dihilangkan pada bentuk 3NF.
 
 ### 5.4 Third Normal Form (3NF)
 
