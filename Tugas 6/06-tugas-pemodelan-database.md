@@ -119,8 +119,8 @@ Contoh bentuk 1NF:
 | ID Peminjaman | NIM | Nama Mahasiswa | Program Studi | ID Buku | Judul Buku | Nama Penerbit | Tahun Terbit | Tanggal Peminjaman | Tanggal Jatuh Tempo | Tanggal Pengembalian |
 |---|---|---|---|---|---|---|---|---|---|---|
 | P001 | D121241031 | Tyas | Teknik Informatika | B001 | Basis Data | Rais | 2024 | 2026-09-01 | 2026-09-08 | 2026-09-07 |
-| P002 | D121241031 | Tyas | Teknik Informatika | B002 | Pemrograman Web | Informatika | 2023 | 2026-09-03 | 2026-09-10 | - |
-| P003 | D121241077 | Yusuf | Teknik Informatika | B003 | Jaringan Komputer | Erlangga | 2022 | 2026-09-05 | 2026-09-12 | 2026-09-11 |
+| P001 | D121241031 | Tyas | Teknik Informatika | B002 | Pemrograman Web | Informatika | 2023 | 2026-09-01 | 2026-09-08 | - |
+| P002 | D121241077 | Yusuf | Teknik Informatika | B003 | Jaringan Komputer | Erlangga | 2022 | 2026-09-05 | 2026-09-12 | 2026-09-11 |
 
 Pada bentuk ini, setiap kolom hanya memiliki satu nilai dan tidak terdapat kelompok data berulang dalam satu sel. Namun, masih terdapat redundansi data. Data mahasiswa 'Tyas' ditulis berulang untuk setiap buku yang dipinjam, dan informasi penerbit serta buku juga dapat muncul kembali pada transaksi yang berbeda.
 
@@ -134,11 +134,11 @@ Pada tahap 2NF, bentuk 1NF dianalisis untuk menghilangkan ketergantungan parsial
 Untuk menghilangkan ketergantungan parsial, data dipisahkan menjadi beberapa tabel.
 
 **Tabel Transaksi Peminjaman:**
-| ID Peminjaman | NIM | Nama Mahasiswa | Program Studi | Tanggal Peminjaman | Tanggal Jatuh Tempo | Tanggal Pengembalian |
+| ID Peminjaman | NIM | Nama Mahasiswa | Program Studi | ID Buku | Tanggal Peminjaman | Tanggal Jatuh Tempo | Tanggal Pengembalian |
 |---|---|---|---|---|---|---|
-| P001 | D121241031 | Tyas | Teknik Informatika | 2026-09-01 | 2026-09-08 | 2026-09-07 |
-| P002 | D121241031 | Tyas | Teknik Informatika | 2026-09-03 | 2026-09-10 | - |
-| P003 | D121241077 | Yusuf | Teknik Informatika | 2026-09-05 | 2026-09-12 | 2026-09-11 |
+| P001 | D121241031 | Tyas | Teknik Informatika | B001 | 2026-09-01 | 2026-09-08 | 2026-09-07 |
+| P001 | D121241031 | Tyas | Teknik Informatika | B002 | 2026-09-01 | 2026-09-08 | - |
+| P002 | D121241077 | Yusuf | Teknik Informatika | B003 | 2026-09-05 | 2026-09-12 | 2026-09-11 |
 
 **Tabel Buku:**
 | ID Buku | Judul Buku | Nama Penerbit | Tahun Terbit |
@@ -179,11 +179,11 @@ Hasil pemisahan pada bentuk 3NF:
 | B003 | Jaringan Komputer | 978000000003 | 2022 | T003 |
 
 **Tabel Transaksi Peminjaman:**
-| ID Peminjaman | NIM | ID Buku | Tanggal Peminjaman | Tanggal Jatuh Tempo | Tanggal Pengembalian |
-|---|---|---|---|---|---|
-| P001 | D121241031 | B001 | 2026-09-01 | 2026-09-08 | 2026-09-07 |
-| P002 | D121241031 | B002 | 2026-09-03 | 2026-09-10 | - |
-| P003 | D121241077 | B003 | 2026-09-05 | 2026-09-12 | 2026-09-11 |
+| ID Peminjaman | NIM | ID Buku | Tanggal Peminjaman | Tanggal Jatuh Tempo | Tanggal Pengembalian | Status Peminjaman |
+|---|---|---|---|---|---|---|
+| P001 | D121241031 | B001 | 2026-09-01 | 2026-09-08 | 2026-09-07 | Dikembalikan |
+| P002 | D121241031 | B002 | 2026-09-03 | 2026-09-10 | - | Dipinjam |
+| P003 | D121241077 | B003 | 2026-09-05 | 2026-09-12 | 2026-09-11 | Dikembalikan |
 
 Dengan pemisahan tersebut, setiap atribut non-kunci bergantung langsung pada primary key tabelnya. Data mahasiswa, buku, dan penerbit juga tidak perlu diulang pada setiap transaksi peminjaman.
 
@@ -265,3 +265,8 @@ erDiagram
 ```
 
 ## 8. Kesimpulan
+Perancangan basis data E-Library Kampus terdiri dari empat entitas utama, yaitu Mahasiswa, Buku, Penerbit, dan Transaksi Peminjaman. Setiap entitas memiliki atribut dan primary key yang digunakan untuk mengidentifikasi data secara unik, sedangkan foreign key digunakan untuk menghubungkan antarentitas.
+
+Proses normalisasi dilakukan melalui tahap UNF, 1NF, 2NF, dan 3NF untuk mengurangi redundansi serta menghindari anomali pada data. Hasil akhir perancangan menghasilkan tabel Mahasiswa, Penerbit, Buku, dan Transaksi Peminjaman dengan relasi yang sesuai dan struktur data yang lebih terorganisasi.
+
+ERD yang dibuat menunjukkan bahwa Mahasiswa memiliki banyak transaksi peminjaman, Buku dapat tercatat dalam banyak transaksi peminjaman, dan Penerbit dapat menerbitkan banyak Buku. Dengan rancangan tersebut, basis data E-Library dapat digunakan untuk mengelola data mahasiswa, buku, penerbit, serta aktivitas peminjaman dan pengembalian secara terstruktur.
