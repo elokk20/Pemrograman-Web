@@ -222,6 +222,46 @@ Dengan pemisahan tersebut, setiap atribut non-kunci bergantung langsung pada pri
 | tanggal_jatuh_tempo | DATE | - | Batas waktu pengembalian buku |
 | tanggal_pengembalian | DATE | - | Tanggal buku dikembalikan |
 | status_peminjaman | VARCHAR(20) | - | Status peminjaman buku |
-## 7. Visualisasi Relasi
+
+## 7. Visualisasi Relasi ERD
+Relasi antar entitas pada sistem E-Library dapat divisualisasikan menggunakan ERD berikut:
+
+```mermaid
+erDiagram
+    MAHASISWA ||--o{ TRANSAKSI_PEMINJAMAN : melakukan
+    BUKU ||--o{ TRANSAKSI_PEMINJAMAN : dipinjam
+    PENERBIT ||--o{ BUKU : menerbitkan
+
+    MAHASISWA {
+        varchar nim PK
+        varchar nama_mahasiswa
+        varchar program_studi
+        varchar email
+    }
+
+    PENERBIT {
+        varchar id_penerbit PK
+        varchar nama_penerbit
+        varchar alamat_penerbit
+    }
+
+    BUKU {
+        varchar id_buku PK
+        varchar judul_buku
+        varchar isbn
+        year tahun_terbit
+        varchar id_penerbit FK
+    }
+
+    TRANSAKSI_PEMINJAMAN {
+        varchar id_peminjaman PK
+        varchar nim FK
+        varchar id_buku FK
+        date tanggal_peminjaman
+        date tanggal_jatuh_tempo
+        date tanggal_pengembalian
+        varchar status_peminjaman
+    }
+```
 
 ## 8. Kesimpulan
