@@ -70,6 +70,23 @@ Relasi antar entitas dalam sistem E-Library adalah sebagai berikut:
 ## 5. Normalisasi
 
 ### 5.1 Unnormalized Form (UNF)
+Pada bentuk UNF, data mahasiswa, buku, penerbit, dan transaksi peminjaman masih dicatat dalam satu struktur data. Informasi peminjaman dapat berisi lebih dari satu buku dalam satu record sehingga terdapat kelompok data berulang.
+
+Contoh bentuk UNF:
+
+| NIM | Nama Mahasiswa | Program Studi | Buku Dipinjam | Penerbit | Tanggal Peminjaman | Tanggal Jatuh Tempo | Tanggal Pengembalian |
+|---|---|---|---|---|---|---|---|
+| D121241031 | Tyas | Teknik Informatika | {B001, Basis Data, Rais, 2024}, {B002, Pemrograman Web, Informatika, 2023} | {Rais, Informatika} | {2026-09-01, 2026-09-03} | {2026-09-08, 2026-09-10} | {2026-09-07, -} |
+| D121241077 | Yusuf | Teknik Informatika | {B003, Jaringan Komputer, Erlangga, 2022} | {Erlangga} | {2026-09-05} | {2026-09-12} | {2026-09-11} |
+
+Bentuk tersebut belum memenuhi 1NF karena terdapat beberapa nilai dalam satu sel, khususnya pada data buku dan informasi peminjaman. Data mahasiswa dan penerbit juga dapat mengalami pengulangan ketika terdapat lebih dari satu buku atau transaksi.
+
+Masalah pada bentuk UNF:
+- Satu mahasiswa dapat memiliki beberapa buku dalam satu record.
+- Informasi buku dan penerbit berada dalam kelompok data berulang.
+- Informasi tanggal peminjaman dan pengembalian dapat memiliki lebih dari satu nilai.
+- Terdapat redundansi data mahasiswa dan penerbit.
+- Struktur tersebut dapat menimbulkan anomali saat data ditambahkan, diubah, atau dihapus.
 
 ### 5.2 First Normal Form (1NF)
 
